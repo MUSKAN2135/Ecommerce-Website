@@ -54,13 +54,12 @@ export default function Shopproducts() {
             <div style={{ backgroundImage: `url(${shopbg})`, backgroundPosition: "bottom", backgroundSize: "cover", backgroundRepeat: "no-repeat", height: "60vh", }} className="flex items-center justify-center">
                 <h1 className="text-4xl font-bold text-white drop-shadow-lg">Shop</h1>
             </div>
-            <div className="flex flex-wrap px-4 py-10">
+            <div className="flex flex-wrap px-4 py-22">
                 <div className="lg:w-75 md:w-80 w-full py-10 md:mr-5 mx-0">
                     <Sidebar />
                 </div>
                 {/* Products*/}
-                <div className="flex-1">
-                    <h1 className="text-4xl font-bold text-center py-6">All Products</h1>
+                <div className="flex-1 pt-10">
                     {currentProducts.length > 0 ? (
                         <div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
