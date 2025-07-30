@@ -4,12 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaKey, FaUser } from 'react-icons/fa';
 
 const Adminlogin = () => {
-        const [showPassword, setShowPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
     const [formData, setFormData] = useState({
         Email: "",
         Password: ""
     });
-
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -18,26 +17,9 @@ const Adminlogin = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const admins = JSON.parse(localStorage.getItem('admins')) || [];
-
-        const matchedAdmin = admins.find(
-            (admin) =>
-                admin.Email === formData.Email &&
-                admin.Password === formData.Password
-        );
-
-        if (!matchedAdmin) {
-            toast.error("Invalid email or password!");
-            return;
-        }
-
-        if (matchedAdmin.Role === 'admin') {
-            toast.success("Login successful!");
-            navigate("/dashboard");
-        } else {
-            toast.error("Unauthorized: Not an admin");
-        }
-    };
+        toast.success("Login successful!");
+        navigate("/dashboard");
+    }
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };

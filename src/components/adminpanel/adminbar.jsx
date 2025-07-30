@@ -19,8 +19,8 @@ export default function AdminNavbar({ isMenuOpen, setIsMenuOpen }) {
   return (
     <>
       {/* Topbar */}
-      <div className={`flex flex-col lg:flex-row items-start lg:items-center justify-between px-4 py-4 bg-gray-200 shadow-md fixed top-0 right-0 z-10 transition-all duration-300 ${isMenuOpen ? 'left-60 w-[calc(100%-15rem)]' : 'left-0 w-full'}`}>
-        <div className="flex w-full items-center justify-between mb-4 lg:mb-0 lg:max-w-md">
+      <div className={`flex justify-between px-4 py-4 bg-gray-200 shadow-md fixed top-0 right-0 z-10 transition-all duration-300 ${isMenuOpen ? 'left-60 w-[calc(100%-15rem)]' : 'left-0 w-full'}`}>
+        <div className="flex w-full items-center justify-between mb-4 lg:mb-0">
           <div className="text-2xl cursor-pointer mr-2" onClick={toggleMenu}>
             {isMenuOpen ? (
               <RxCross2 className="md:block hidden" onClick={toggleMenu} />
@@ -28,17 +28,19 @@ export default function AdminNavbar({ isMenuOpen, setIsMenuOpen }) {
               <LiaBarsSolid className="block" onClick={toggleMenu} />
             )}
           </div>
-          <div className="relative w-full md:block hidden">
-            <IoIosSearch className="absolute left-2 top-1/2  -translate-y-1/2 text-gray-600" />
+          <div className="relative w-full md:block hidden lg:max-w-md">
+            <IoIosSearch className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-600" />
             <input
               placeholder="Search"
               className="py-2 pl-8 pr-4 text-sm w-full border border-gray-400 text-black rounded-md"
             />
           </div>
+          <div className='block'>
+            <Link to="/contact" className="hover:text-[#0097b2] cursor-pointer ml-auto">
+              <IoMdContact className="text-2xl text-gray-600" />
+            </Link>
+          </div>
         </div>
-        <Link to="/contact" className="hover:text-[#0097b2] cursor-pointer ml-auto">
-          <IoMdContact className="text-2xl text-gray-600" />
-        </Link>
       </div>
       {/* Sidebar */}
       <div className={`h-screen bg-cyan-950 shadow-lg text-white w-60 fixed top-0 z-10 transition-all duration-300 ${isMenuOpen ? 'left-0' : '-left-60'}`}>

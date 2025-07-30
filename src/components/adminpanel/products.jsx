@@ -43,19 +43,15 @@ const Products = () => {
         <div className="flex h-screen ">
             <AdminNavbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
             <div
-                className={`flex-1 m-4 sm:m-10 transition-all duration-300 ${isMenuOpen ? 'sm:ml-60' : 'ml-0'
-                    }`}
-            >                <h1 className="text-2xl font-bold mb-6">Product Dashboard</h1>
+                className={`flex-1 m-4 sm:m-10 transition-all duration-300 ${isMenuOpen ? 'sm:ml-60' : 'ml-0'}`}>                <h1 className="text-2xl font-bold mb-6">Product Dashboard</h1>
                 <button
                     onClick={() => {
                         setForm({ title: '', price: '', image: '', id: null });
                         setShowaddproduct(true);
                     }}
-                    className="bg-green-500 text-white px-4 py-2 rounded mb-6"
-                >
+                    className="bg-green-500 text-white px-4 py-2 rounded mb-6">
                     Add Product
                 </button>
-
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
@@ -144,5 +140,4 @@ const Products = () => {
         </div>
     );
 };
-
 export default Products;

@@ -5,13 +5,26 @@ import { Link } from 'react-router-dom'
 import footbg from '/footer-bg.png'
 
 export default function Footer() {
+    const links = [
+        { name: "Login", path: "/login" },
+        { name: "Wishlist", path: "/wishlist" },
+        { name: "FAQs", path: "/FAQs" },
+        { name: "Contact", path: "/contact" }
+    ];
+    const navItems = [
+        { name: "Home", path: "/home" },
+        { name: "Shop", path: "/shop" },
+        { name: "Blog", path: "/blog" },
+        { name: "About Us", path: "/aboutUs" }
+    ];
+
     return (
-        <div className='w-auto' style={{backgroundImage: `url(${footbg})`, width: "auto"}}>
+        <div className='w-auto' style={{ backgroundImage: `url(${footbg})`, backgroundRepeat:"no-repeat", backgroundSize:"cover", width: "100%" }}>
             <div className="text-white md:flex items-center sm:flex-wrap md:justify-center leading-10 md:px-0 py-12 pb-10">
                 <div className="py-5 md:px-0 lg:w-70 md:w-100 md:mx-0 mx-3">
                     <div className="logo">
                         <h2 className='text-4xl font-[Mono] text-yellow-600 py-4'>TrendyMart</h2>
-                    </div>                    
+                    </div>
                     <p className='p-2 leading-7 text-gray-300'>
                         Gentle textures, mindful design
                         Crafted to soothe, styled to charm
@@ -27,44 +40,30 @@ export default function Footer() {
                 <div className="py-5 md:px-0 lg:w-45 md:w-55 w-auto md:mx-0 mx-3">
                     <h2 className='text-white text-xl'>Company</h2>
                     <ul>
-                        <Link to='/login' className="w-25 group hover:text-yellow-600 transition duration-300 cursor-pointer flex items-center">
-                            <MdOutlineKeyboardArrowRight className="text-2xl text-white p-1 hidden group-hover:block" />
-                            Login
-                        </Link>
-                        <Link to='/wishlist' className="w-25 group hover:text-yellow-600 transition duration-300 cursor-pointer flex items-center">
-                            <MdOutlineKeyboardArrowRight className="text-2xl text-white p-1 hidden group-hover:block" />
-                            Wishlist
-                        </Link>
-                        <Link to='/FAQs' className="w-25 group hover:text-yellow-600 transition duration-300 cursor-pointer flex items-center">
-                            <MdOutlineKeyboardArrowRight className="text-white p-1 text-2xl hidden group-hover:block" />
-                            FAQs
-                        </Link>
-                        <Link to='/contact' className="group w-25 hover:text-yellow-600 transition duration-300 cursor-pointer flex items-center">
-                            <MdOutlineKeyboardArrowRight className="text-white p-1 text-2xl hidden group-hover:block" />
-                            Contact
-                        </Link>
+                        {links.map((link, index) => (
+                            <Link
+                                key={index}
+                                to={link.path}
+                                className="w-25 group hover:text-yellow-600 transition duration-300 cursor-pointer flex items-center">
+                                <MdOutlineKeyboardArrowRight className="text-2xl text-white p-1 hidden group-hover:block" />
+                                {link.name}
+                            </Link>
+                        ))}
                     </ul>
 
                 </div>
                 <div className="py-5 md:px-0 lg:w-45  md:w-55 w-auto md:mx-0 mx-3">
                     <h2 className='text-white text-xl'>Services</h2>
                     <ul>
-                        <Link to='/home' className="group w-25 hover:text-yellow-600 transition duration-300 cursor-pointer flex items-center">
-                            <MdOutlineKeyboardArrowRight className="text-white p-1 text-2xl hidden group-hover:block" />
-                            Home
-                        </Link>
-                        <Link to='/shop' className="group w-25 hover:text-yellow-600 transition duration-300 cursor-pointer flex items-center">
-                            <MdOutlineKeyboardArrowRight className="text-white p-1 text-2xl hidden group-hover:block" />
-                            Shop
-                        </Link>
-                        <Link to='/blog' className="group w-25 hover:text-yellow-600 transition duration-300 cursor-pointer flex items-center">
-                            <MdOutlineKeyboardArrowRight className="text-white p-1 text-2xl hidden group-hover:block" />
-                            Blog
-                        </Link>
-                        <Link to='/aboutUs' className="group w-25 hover:text-yellow-600 transition duration-300 cursor-pointer flex items-center">
-                            <MdOutlineKeyboardArrowRight className="text-white p-1 text-2xl hidden group-hover:block" />
-                            About Us
-                        </Link>
+                        {navItems.map((item, i) => (
+                            <Link
+                                key={i}
+                                to={item.path}
+                                className="group w-25 hover:text-yellow-600 transition duration-300 cursor-pointer flex items-center" >
+                                <MdOutlineKeyboardArrowRight className="text-white p-1 text-2xl hidden group-hover:block" />
+                                {item.name}
+                            </Link>
+                        ))}
                     </ul>
                 </div>
                 <div className="py-5 md:px-0 lg:w-70 md:w-100 md:mx-0 mx-3">
@@ -85,9 +84,8 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-            <hr className='w-full text-cyan-800' />
+                <hr className='w-full text-cyan-800' />
             </div>
-
         </div>
     )
 }

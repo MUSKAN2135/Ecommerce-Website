@@ -7,7 +7,8 @@ import bgimg from '/slider-bg.png'
 import Newsletter from "../newsletter/news";
 import Gallery from "../gallery/gallery";
 import Section from "../section/section";
-export default function Allpages() {
+
+export default function Home() {
     return (
         <div className="overflow-hidden">
             <div style={{ backgroundImage: `url(${bgimg})`, backgroundSize: "cover", height: "110vh" }}>
@@ -21,8 +22,8 @@ export default function Allpages() {
             <div className="mt-8">
                 <Allproducts />
             </div>
-            <Section/>
-            <Gallery/>
+            <Section />
+            <Gallery />
             <Newsletter />
             <Footer />
         </div>

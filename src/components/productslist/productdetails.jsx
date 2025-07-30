@@ -9,10 +9,10 @@ import bg from '/banner.png'
 export default function ProductDetails() {
     const [detailedproduct, setdetailedproduct] = useState(false);
     const [wishlist, setWishlist] = useState(false);
-
     const { id } = useParams();
-    const togglewishlist = () => { setWishlist(!wishlist) }
 
+
+    const togglewishlist = () => { setWishlist(!wishlist) }
     const productdetail = async () => {
         try {
             const response = await axios.get(`https://fakestoreapi.com/products/${id}`)
@@ -24,6 +24,7 @@ export default function ProductDetails() {
     useEffect(() => {
         productdetail()
     }, [id])
+    
     // rating 
     const renderStars = (rating) => {
         const stars = [];

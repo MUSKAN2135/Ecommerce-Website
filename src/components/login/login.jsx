@@ -4,7 +4,7 @@ import { FaEye, FaEyeSlash, FaKey, FaUser } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-    const [formData, setFormData] = useState({ Email: '', Password: '', Role: 'user' });
+    const [formData, setFormData] = useState({ Email: '', Password: '' });
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
@@ -14,26 +14,8 @@ const Login = () => {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-        const matchedUser = storedUsers.find(
-            (user) =>
-                user.Email === formData.Email &&
-                user.Password === formData.Password &&
-                user.Role === formData.Role
-        );
-
-        if (matchedUser) {
-            toast.success('Login successful!');
-            localStorage.setItem("loggedInUser", JSON.stringify(matchedUser));
-
-            if (matchedUser.Role === 'user') {
-                navigate("/home");
-            } else {
-                navigate("/login");
-            }
-        } else {
-            toast.error('Invalid credentials or user not registered.');
-        }
+        toast.success("Login successfully!");
+        navigate("/home");
     };
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -100,8 +82,7 @@ const Login = () => {
                     <div className="text-center mt-6">
                         Don't have an account?
                         <button
-                            className="text-blue-600 underline ml-1 cursor-pointer"
-                        >
+                            className="text-blue-600 underline ml-1 cursor-pointer">
                             Sign Up
                         </button>
                     </div>

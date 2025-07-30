@@ -1,7 +1,7 @@
 import React from "react";
 
 const images = [
-    { src: "/party_western_dress.webp", className: "" }, // tall image
+    { src: "/party_western_dress.webp"}, 
     { src: "/jwell.webp", className: "lg:row-span-2 row-span-1" },
     { src: "/mens wear.webp", className: "lg:row-span-2 row-span-1" },
     { src: "/images.jpeg"},

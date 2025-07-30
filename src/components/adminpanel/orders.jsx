@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchOrders } from './ordersslice';
 import { Link } from 'react-router-dom';
-import { FaArrowCircleLeft } from 'react-icons/fa';
 import AdminNavbar from './adminbar';
 
 const Orders = () => {
@@ -18,7 +17,6 @@ const Orders = () => {
     <div className='flex h-full'>
       <AdminNavbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <div className={`flex-1 m-5 transition-all duration-300 ${isMenuOpen ? 'ml-60' : 'ml-5'}`}>
-        <Link to="/dashboard" className="block hover:text-[#0097b2] cursor-pointer"><FaArrowCircleLeft className='h-5 w-5' /></Link>
         <h2 className="text-2xl font-semibold mb-4">Orders</h2>
         {loading && <p className="text-gray-500">Loading orders...</p>}
         {error && <p className="text-red-500">Error: {error}</p>}

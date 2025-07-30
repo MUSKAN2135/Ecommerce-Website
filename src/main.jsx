@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify'
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from './components/adminpanel/store.jsx';
+import { store } from './components/store/store.jsx';
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>

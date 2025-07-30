@@ -4,11 +4,17 @@ import { LiaBarsSolid } from 'react-icons/lia'
 import { TfiShoppingCart } from 'react-icons/tfi'
 import { IoIosSearch } from 'react-icons/io'
 import { Link } from 'react-router-dom'
-import logo from '../../images/T.png'
 import { FaRegHeart, FaUser } from 'react-icons/fa'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navlinks = [
+    { name: "Home", path: "/" },
+    { name: "Shop", path: "/shop" },
+    { name: "Blog", path: "/blog" },
+    { name: "About Us", path: "/aboutUs" },
+    { name: "Contact", path: "/contactUs" }
+  ]
 
   // Single state object for all dropdowns
   const [dropdownStates, setDropdownStates] = useState({
@@ -28,7 +34,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className='flex flex-col justify-center fixed top-0 left-0 z-10 w-full shadow-md'>
+    <div className='flex flex-col justify-center fixed top-0 left-0 z-10 w-full'>
       <div className="bg-cyan-950 flex px-6 py-2 lg:justify-around justify-between items-center text-white">
         <div className="logo">
           <h2 className='md:text-3xl sm:text-xl text-lg font-[Mono] text-yellow-600'>TrendyMart</h2>
@@ -52,7 +58,7 @@ export default function Navbar() {
             onMouseLeave={() => handleMouseLeave('user')}>
             <p className='mx-6 hover:text-yellow-600 cursor-pointer transition duration-150 ease-in-out' ><FaUser /></p>
             {dropdownStates.user && (
-              <div className="absolute right-0 left-0 mr-4 w-40 bg-[#F5F1E9] shadow-lg  transition duration-150 ease-in-out">
+              <div className="absolute right-0 left-0 mr-4 w-40 shadow-lg  transition duration-150 ease-in-out">
                 <Link to="/signup" className="block p-3 hover:text-[#FFFFFF]  hover:bg-[#0097b2] text-[#0097b2] cursor-pointer transition duration-150 ease-in-out">Signup</Link>
                 <hr className='text-gray-300' />
                 <Link to="/login" className="block p-3 hover:text-[#FFFFFF]  hover:bg-[#0097b2] text-[#0097b2] cursor-pointer transition duration-150 ease-in-out">Login</Link>
@@ -63,14 +69,12 @@ export default function Navbar() {
       </div>
       <hr className='text-yellow-600' />
       <div className="topbar py-2 bg-cyan-950 flex lg:justify-around justify-between items-center text-white">
-        <div className="nav-link pt-3 lg:block hidden">
-          <div className='flex'>
-            <Link to="/" className='mx-10 mb-2 hover:text-[#0097b2] cursor-pointer transition duration-150 ease-in-out'>Home</Link>
-            <Link to='/shop' className='mx-10 mb-2 hover:text-[#0097b2] cursor-pointer transition duration-150 ease-in-out'>Shop</Link>
-            <Link to="/blog" className='mx-10 mb-2 hover:text-[#0097b2] cursor-pointer transition duration-150 ease-in-out' >Blog</Link>
-            <Link to="/aboutUs" className='mx-10 mb-2 hover:text-[#0097b2] cursor-pointer transition duration-150 ease-in-out' >About Us</Link>
-            <Link to="/contactUs" className='mx-10 mb-2 hover:text-[#0097b2] cursor-pointer transition duration-150 ease-in-out' >Contact</Link>
-          </div>
+        <div className='flex pt-3 lg:block hidden'>
+          {navlinks.map((link, index) => (
+            <Link key={index} to={link.path} className='mx-10 mb-2 hover:text-[#0097b2] cursor-pointer transition duration-150 ease-in-out'>
+              {link.name}
+            </Link>
+          ))}
         </div>
       </div>
       {/* hamburger togglemenu*/}
@@ -81,11 +85,11 @@ export default function Navbar() {
             <input placeholder='Search over here' className='w-100 text-gray-500 outline-none border py-2 pl-10 rounded-md ' />
           </div>
           <div className='flex flex-col'>
-            <Link to="/" className='mx-6 mb-4 hover:text-[#0097b2] cursor-pointer transition duration-150 ease-in-out'>Home</Link>
-            <Link to='/shop' className='mx-6 mb-4 hover:text-[#0097b2] cursor-pointer transition duration-150 ease-in-out'>Shop</Link>
-            <Link to="/blog" className='mx-6 mb-4 hover:text-[#0097b2] cursor-pointer transition duration-150 ease-in-out' >Blog</Link>
-            <Link to="/aboutUs" className='mx-6 mb-4 hover:text-[#0097b2] cursor-pointer transition duration-150 ease-in-out' >About Us</Link>
-            <Link to="/contactUs" className='mx-6 mb-4 hover:text-[#0097b2] cursor-pointer transition duration-150 ease-in-out' >Contact</Link>
+            {navlinks.map((link, i) => (
+              <Link key={i} to={link.path} className='mx-10 mb-2 hover:text-[#0097b2] cursor-pointer transition duration-150 ease-in-out'>
+                {link.name}
+              </Link>
+            ))}
           </div>
           <div className="icons flex justify-center mx-3">
             <Link to='/cart' className='w-40 rounded-md flex items-center justify-center p-3  bg-[#0097b2] hover:bg-[transparent] hover:border hover:border-[#0097b2] m-2'> <TfiShoppingCart className='mx-2 cursor-pointer hover:text-yellow-600 transition duration-150 ease-in-out ' />Cart</Link>

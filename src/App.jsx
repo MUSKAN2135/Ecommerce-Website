@@ -5,7 +5,7 @@ import 'aos/dist/aos.css'; // CSS file
 import Login from "./components/login/login";
 import { ToastContainer } from "react-toastify";
 import Signup from "./components/signup/signup";
-import Allpages from "./components/pages/allpages";
+import Allpages from "./components/pages/home";
 import Allproducts from "./components/productslist/Allproducts";
 import Admindashboard from "./components/adminpanel/dashboard";
 import Adminlogin from "./components/adminpanel/adminlogin";
@@ -19,6 +19,7 @@ import ProductDetails from './components/productslist/productdetails'
 import About from "./components/about/about";
 import Contact from "./components/contact/contact";
 import Blog from "./components/blog/blog";
+import Home from "./components/pages/home";
 
 export default function App() {
   useEffect(() => {
@@ -31,9 +32,7 @@ export default function App() {
     <>
       <ToastContainer position="top-right" autoClose={2000} />
       <Routes>
-        {/* <Route exact path="/" element={<Adminlogin />} /> */}
-        <Route exact path="/" element={<Allpages />} />
-        <Route exact path="/home" element={<Allpages />} />
+        <Route exact path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/allproducts" element={<Allproducts />} />
@@ -43,7 +42,6 @@ export default function App() {
         <Route path="/aboutUs" element={<About />} />
         <Route path="/contactUs" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
-
         {/* admin panel */}
         <Route path="/admin-login" element={<Adminlogin />} />
         <Route path="/admin-signup" element={<Adminsignup />} />
